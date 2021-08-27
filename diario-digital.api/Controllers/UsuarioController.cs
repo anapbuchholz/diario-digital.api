@@ -10,6 +10,6 @@ namespace diario_digital.api.Controllers
     [Route("usuarios")]
     public class UsuarioController : ControllerBase
     {
-                
+        
     }
 }
