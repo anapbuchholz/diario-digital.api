@@ -10,6 +10,10 @@ namespace diario_digital.api.Controllers
     [Route("usuarios")]
     public class UsuarioController : ControllerBase
     {
-        
+        [Route("{Id}")]
+        public async Task<IActionResult> ObterUsuario([FromRoute] Guid Id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

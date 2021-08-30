@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace diario_digital.api.Entidades
+namespace diario_digital.servicos.Entidades
 {
     public class UsuarioEntidade
     {
@@ -27,7 +28,7 @@ namespace diario_digital.api.Entidades
 
         public List<PostagemEntidade> Postagem { get; set; }
 
-        public enum Genero 
+        public enum Genero
         {
             MASCULINO = 1,
             FEMININO = 2

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace diario_digital.api.Entidades
+namespace diario_digital.servicos.Entidades
 {
     public class PostagemEntidade
     {
