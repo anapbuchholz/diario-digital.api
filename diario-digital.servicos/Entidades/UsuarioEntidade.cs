@@ -21,7 +21,7 @@ namespace diario_digital.servicos.Entidades
             FotoDePerfil = usuarioBd.FotoDePerfil;
         }
 
-        public Guid Id { get; }
+        public int Id { get; }
 
         public DateTime DataDeNascimento { get; set; }
 

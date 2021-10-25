@@ -8,11 +8,11 @@ namespace diario_digital.infraestrutura.Repositorios
 {
     public class UsuarioRepositorio
     {
-        public async Task<UsuarioBd> ObterUsuario(Guid id)
+        public async Task<UsuarioBd> ObterUsuario(int id)
         {
             var usuario = new UsuarioBd
             {
-                Id = new Guid("1234-1234-1234-1234"),
+                Id = 1,
                 DataDeNascimento = new DateTime(2021, 09, 01),
                 Senha = "1234",
                 Sexo = "FEMININO",

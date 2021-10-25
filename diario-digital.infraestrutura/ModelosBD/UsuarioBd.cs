@@ -6,7 +6,7 @@ namespace diario_digital.infraestrutura.ModelosBD
 {
     public class UsuarioBd
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public DateTime DataDeNascimento { get; set; }
 

@@ -19,7 +19,7 @@ namespace diario_digital.api.Controllers
         }
 
         [Route("{Id}")]
-        public async Task<IActionResult> ObterUsuario([FromRoute] Guid id)
+        public async Task<IActionResult> ObterUsuario([FromRoute] int id)
         {
             var usuario = await UsuarioServico.ObterUsuario(id);
             if (usuario == null)

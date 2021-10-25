@@ -16,7 +16,7 @@ namespace diario_digital.servicos.Servicos
             UsuarioRepositorio = new UsuarioRepositorio();
         }
 
-        public async Task<UsuarioEntidade> ObterUsuario(Guid id)
+        public async Task<UsuarioEntidade> ObterUsuario(int id)
         {
             var usuario = await UsuarioRepositorio.ObterUsuario(id);
             var usuarioEntidade = new UsuarioEntidade(usuario);
