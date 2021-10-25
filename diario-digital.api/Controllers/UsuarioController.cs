@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using diario_digital.servicos.Servicos;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,21 @@ namespace diario_digital.api.Controllers
     [Route("usuarios")]
     public class UsuarioController : ControllerBase
     {
-        [Route("{Id}")]
-        public async Task<IActionResult> ObterUsuario([FromRoute] Guid Id)
+        public UsuarioServico UsuarioServico { get; set; }
+
+        public UsuarioController()
         {
-            throw new NotImplementedException();
+            UsuarioServico = new UsuarioServico();
+        }
+
+        [Route("{Id}")]
+        public async Task<IActionResult> ObterUsuario([FromRoute] Guid id)
+        {
+            var usuario = await UsuarioServico.ObterUsuario(id);
+            if (usuario == null)
+                NotFound();
+
+            return Ok(usuario);
         }
     }
 }

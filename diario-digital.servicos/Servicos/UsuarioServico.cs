@@ -1,4 +1,5 @@
-﻿using diario_digital.servicos.Entidades;
+﻿using diario_digital.infraestrutura.Repositorios;
+using diario_digital.servicos.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,10 +8,19 @@ using System.Threading.Tasks;
 namespace diario_digital.servicos.Servicos
 {
     public class UsuarioServico
-    {       
-        public Task<UsuarioEntidade> ObterUsuario(Guid Id)
+    {
+        public UsuarioRepositorio UsuarioRepositorio { get; set; }
+
+        public UsuarioServico()
         {
-            throw new NotImplementedException();
+            UsuarioRepositorio = new UsuarioRepositorio();
+        }
+
+        public async Task<UsuarioEntidade> ObterUsuario(Guid id)
+        {
+            var usuario = await UsuarioRepositorio.ObterUsuario(id);
+            var usuarioEntidade = new UsuarioEntidade(usuario);
+            return usuarioEntidade;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using diario_digital.infraestrutura.ModelosBD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,18 @@ namespace diario_digital.servicos.Entidades
 {
     public class UsuarioEntidade
     {
+        public UsuarioEntidade(UsuarioBd usuarioBd)
+        {
+            Id = usuarioBd.Id;
+            DataDeNascimento = usuarioBd.DataDeNascimento;
+            Nome = usuarioBd.Nome;
+            Sexo = Enum.Parse<Genero>(usuarioBd.Sexo);
+            Senha = usuarioBd.Senha;
+            Email = usuarioBd.Email;
+            FraseDeStatus = usuarioBd.FraseDeStatus;
+            FotoDePerfil = usuarioBd.FotoDePerfil;
+        }
+
         public Guid Id { get; }
 
         public DateTime DataDeNascimento { get; set; }
