@@ -1,8 +1,6 @@
 ﻿using diario_digital.servicos.Servicos;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace diario_digital.api.Controllers
@@ -23,9 +21,9 @@ namespace diario_digital.api.Controllers
         {
             var usuario = await UsuarioServico.ObterUsuario(id);
             if (usuario == null)
-                NotFound();
-
-            return Ok(usuario);
+                return NotFound(new ResponseModel { StatusCode = HttpStatusCode.NotFound });               
+            
+            return Ok(new ResponseModel { StatusCode = HttpStatusCode.OK, Corpo = usuario });
         }
     }
 }
