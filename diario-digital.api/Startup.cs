@@ -9,6 +9,7 @@ namespace diario_digital.api
 {
     public class Startup
     {
+        public readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -21,11 +22,23 @@ namespace diario_digital.api
         {
             services.AddControllers();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("*")
+                        .AllowAnyHeader()
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod();
+                });
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "Diário Digital",
+                    Title = "Diario Digital",
                     Description = "API",
                     Version = "v1"
                 });
@@ -44,13 +57,15 @@ namespace diario_digital.api
 
             app.UseSwaggerUI(swagger =>
             {
-                swagger.SwaggerEndpoint("/swagger/v1/swagger.json", "Diário Digital");
+                swagger.SwaggerEndpoint("/swagger/v1/swagger.json", "Diario Digital API V1");
                 swagger.RoutePrefix = string.Empty;
             });
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthorization();
 

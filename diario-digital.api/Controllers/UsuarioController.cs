@@ -16,7 +16,7 @@ namespace diario_digital.api.Controllers
             UsuarioServico = new UsuarioServico();
         }
 
-        [Route("{Id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> ObterUsuario([FromRoute] int id)
         {
             var usuario = await UsuarioServico.ObterUsuario(id);
