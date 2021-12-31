@@ -1,4 +1,5 @@
 ﻿using diario_digital.servicos.Servicos;
+using diario_digital.servicos.Servicos.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Threading.Tasks;
@@ -9,17 +10,17 @@ namespace diario_digital.api.Controllers
     [Route("usuarios")]
     public class UsuarioController : ControllerBase
     {
-        public UsuarioServico UsuarioServico { get; set; }
+        public readonly IUsuarioServico _usuarioServico;
 
-        public UsuarioController()
+        public UsuarioController(IUsuarioServico usuarioServico)
         {
-            UsuarioServico = new UsuarioServico();
+            _usuarioServico = usuarioServico;
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> ObterUsuario([FromRoute] int id)
         {
-            var usuario = await UsuarioServico.ObterUsuario(id);
+            var usuario = await _usuarioServico.ObterUsuario(id);
             if (usuario == null)
                 return NotFound(new ResponseModel { StatusCode = HttpStatusCode.NotFound });               
             

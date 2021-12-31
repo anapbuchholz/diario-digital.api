@@ -1,24 +1,26 @@
-﻿using diario_digital.infraestrutura.Repositorios;
+﻿using diario_digital.infraestrutura.Repositorios.Interfaces;
 using diario_digital.servicos.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using diario_digital.servicos.Servicos.Interfaces;
 using System.Threading.Tasks;
 
 namespace diario_digital.servicos.Servicos
 {
-    public class UsuarioServico
+    public class UsuarioServico : IUsuarioServico
     {
-        public UsuarioRepositorio UsuarioRepositorio { get; set; }
+        private readonly IUsuarioRepositorio _usuarioRepositorio;
 
-        public UsuarioServico()
+        public UsuarioServico(IUsuarioRepositorio usuarioRepositorio)
         {
-            UsuarioRepositorio = new UsuarioRepositorio();
+            _usuarioRepositorio = usuarioRepositorio;
         }
 
         public async Task<UsuarioEntidade> ObterUsuario(int id)
         {
-            var usuario = await UsuarioRepositorio.ObterUsuario(id);
+            var usuario = await _usuarioRepositorio.ObterUsuario(id);
+
+            if (usuario == null)
+                return null;
+
             var usuarioEntidade = new UsuarioEntidade(usuario);
             return usuarioEntidade;
         }

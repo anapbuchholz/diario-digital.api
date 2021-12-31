@@ -1,12 +1,11 @@
 ﻿using diario_digital.infraestrutura.ModelosBD;
+using diario_digital.infraestrutura.Repositorios.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace diario_digital.infraestrutura.Repositorios
 {
-    public class UsuarioRepositorio
+    public class UsuarioRepositorio : IUsuarioRepositorio
     {
         public async Task<UsuarioBd> ObterUsuario(int id)
         {

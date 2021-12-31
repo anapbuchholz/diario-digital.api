@@ -1,3 +1,7 @@
+using diario_digital.infraestrutura.Repositorios;
+using diario_digital.infraestrutura.Repositorios.Interfaces;
+using diario_digital.servicos.Servicos;
+using diario_digital.servicos.Servicos.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +25,9 @@ namespace diario_digital.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+            services.AddScoped<IUsuarioServico, UsuarioServico>();
 
             services.AddCors(options =>
             {
