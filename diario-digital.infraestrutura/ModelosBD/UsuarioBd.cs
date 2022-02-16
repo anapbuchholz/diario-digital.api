@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace diario_digital.infraestrutura.ModelosBD
 {

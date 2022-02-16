@@ -1,5 +1,4 @@
-﻿using diario_digital.servicos.Servicos;
-using diario_digital.servicos.Servicos.Interfaces;
+﻿using diario_digital.servicos.Servicos.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Threading.Tasks;
